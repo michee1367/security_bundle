@@ -1,5 +1,5 @@
 {
-    "name": "mink67/security",
+    "name": "mink67/security_bundle",
     "license": "MIT",
     "autoload": {
         "psr-4": {
