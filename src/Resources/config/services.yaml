@@ -1,0 +1,21 @@
+services:
+  Mink67\Security\Security\KeycloakAuthenticator:
+    class: Mink67\Security\Security\KeycloakAuthenticator
+    autowire: true
+
+  Mink67\Security\User\OAuthUserProvider:
+    class: Mink67\Security\User\OAuthUserProvider
+    autowire: true
+
+  Mink67\Security\Converters\AccessTokenToUser:
+    class: Mink67\Security\Converters\AccessTokenToUser
+    arguments:
+      $jwk_url: '%mink67.security.jwk_url%'
+      $httpClient: '@Symfony\Contracts\HttpClient\HttpClientInterface'
+      $baseConverter: '@Mink67\OpenidConnect\AccessTokenToUser'
+  Mink67\OpenidConnect\Contracts\User\OAuthUserProvider:
+    class: Mink67\Security\User\OpenidConnect\OAuthUserProvider
+    autowire: true
+  Mink67\OpenidConnect\AccessTokenToUser:
+    class: Mink67\OpenidConnect\AccessTokenToUser
+    autowire: true

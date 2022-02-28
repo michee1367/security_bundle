@@ -1,0 +1,24 @@
+{
+    "name": "mink67/security",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mink67\\Security\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michée NKUSU",
+            "email": "nkusumichee1367@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/security-bundle": "5.4.*",
+        "league/oauth2-client": "^2.6",
+        "symfony/config": "5.4.*",
+        "symfony/dependency-injection": "5.4.*",
+        "symfony/http-foundation": "5.4.*",
+        "symfony/http-kernel": "5.4.*",
+        "mink67/openid_connect": "^1.0"
+    }
+}
