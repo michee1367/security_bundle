@@ -43,7 +43,11 @@ class KeycloakAuthenticator extends AbstractAuthenticator {
      */
     public function authenticate(Request $request): Passport
     {
-        $identifier = str_replace("Bearer ", "", $request->headers->get("Authorization"));
+        $bearerToken = $request->headers->get("Authorization");
+        $identifier = "";
+        if (! is_null($bearerToken)) {
+            $identifier = str_replace("Bearer ", "", $request->headers->get("Authorization"));
+        }
 
         $userConverter = $this->getUserConverter();
 
@@ -52,6 +56,12 @@ class KeycloakAuthenticator extends AbstractAuthenticator {
                 $identifier,
                 function (string $identifier) use($userConverter)
                 {
+                    if (empty($identifier)) {
+
+                        return null;
+
+                    }
+                    
                     $accessToken = new AccessToken(["access_token" => $identifier, "token_type" => "bearer"]);
                     return $userConverter($accessToken);
                 }
@@ -68,7 +78,7 @@ class KeycloakAuthenticator extends AbstractAuthenticator {
 
     public function supports(Request $request): ?bool
     {
-        return $request->headers->get("Authorization") !== null;
+        return true;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response

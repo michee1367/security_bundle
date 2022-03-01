@@ -14,7 +14,6 @@ use Mink67\OpenidConnect\Contracts\User\OAuthUserProvider as IOAuthUserProvider;
 class OAuthUserProvider implements IOAuthUserProvider
 {
 
-
     /**
      * Return the OAuthUser
      * @return OAuthUser
