@@ -19,6 +19,6 @@
         "symfony/dependency-injection": "5.4.*",
         "symfony/http-foundation": "5.4.*",
         "symfony/http-kernel": "5.4.*",
-        "mink67/openid_connect": "^1.0"
+        "mink67/openid_connect": "^1.0.0"
     }
 }
