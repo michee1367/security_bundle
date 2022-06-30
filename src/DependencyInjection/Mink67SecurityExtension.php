@@ -5,6 +5,7 @@ namespace Mink67\Security\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use function Symfony\Component\String\u;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
@@ -34,9 +35,31 @@ class Mink67SecurityExtension extends Extension {
         //dd($config);
 
         $container->setParameter("mink67.security.jwk_url", $config["jwk_url"]);
-        /*$container->setParameter("oauth.client.secret", $config["secret"]);
-        $container->setParameter("oauth.client.server_host_name", $config["server_host_name"]);
-        $container->setParameter("oauth.client.oauth_login_url", $config["oauth_login_url"]);
+        $container->setParameter("mink67.security.host", isset($config["host"]) ? $config["host"]:null);
+        $container->setParameter("mink67.security.path_token", isset($config["path_token"]) ? $config["path_token"]:null);
+        $container->setParameter(
+            "mink67.security.keycloak.user_name", 
+            isset($config["keycloak_user_name"]) ? $config["keycloak_user_name"]:null
+        );
+        $container->setParameter(
+            "mink67.security.keycloak.pw", 
+            isset($config["keycloak_pw"]) ? $config["keycloak_pw"]:null
+        );
+        $container->setParameter(
+            "mink67.security.keycloak.client_secret",
+            isset($config["keycloak_client_secret"]) ? $config["keycloak_client_secret"]:null
+        );
+        $container->setParameter(
+            "mink67.security.keycloak.client_id", 
+            isset($config["keycloak_client_id"]) ? $config["keycloak_client_id"]:null
+        );
+        $container->setParameter(
+            "mink67.security.keycloak.realm", 
+            isset($config["keycloak_realm"]) ? $config["keycloak_realm"]:null
+        );
+        //
+        
+        /*$container->setParameter("oauth.client.oauth_login_url", $config["oauth_login_url"]);
         $container->setParameter("oauth.client.oauth_home_url", $config["oauth_home_url"]);
         $container->setParameter("oauth.client.data_convert", $config["data_convert"]);*/
 

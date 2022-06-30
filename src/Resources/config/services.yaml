@@ -19,3 +19,26 @@ services:
   Mink67\OpenidConnect\AccessTokenToUser:
     class: Mink67\OpenidConnect\AccessTokenToUser
     autowire: true
+
+  Mink67\Security\Services\TokenManager:
+    class: Mink67\Security\Services\TokenManager
+    autowire: true
+
+  Mink67\Security\Services\User\Get:
+    class: Mink67\Security\Services\User\Get
+    autowire: true
+
+  
+  Mink67\Security\Services\User\GetAll:
+    class: Mink67\Security\Services\User\GetAll
+    autowire: true
+
+  
+  Mink67\Security\Services\User\ByRole:
+    class: Mink67\Security\Services\User\ByRole
+    autowire: true
+
+  
+  Mink67\Security\Services\User\ByGroup:
+    class: Mink67\Security\Services\User\ByGroup
+    autowire: true
