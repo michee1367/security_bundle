@@ -100,6 +100,7 @@ class KeycloakAuthenticator extends AbstractAuthenticator {
             // you may want to customize or obfuscate the message first
             //'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
             'message'=>'Authentification échouée'
+            'detail'=> $exception->getMessageKey()
             // or to translate this message
             // $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
         ];
