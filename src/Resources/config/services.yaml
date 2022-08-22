@@ -13,6 +13,7 @@ services:
       $jwk_url: '%mink67.security.jwk_url%'
       $httpClient: '@Symfony\Contracts\HttpClient\HttpClientInterface'
       $baseConverter: '@Mink67\OpenidConnect\AccessTokenToUser'
+      $logger : "@Psr\\Log\\LoggerInterface"
   Mink67\OpenidConnect\Contracts\User\OAuthUserProvider:
     class: Mink67\Security\User\OpenidConnect\OAuthUserProvider
     autowire: true

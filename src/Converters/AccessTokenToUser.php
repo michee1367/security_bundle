@@ -6,6 +6,7 @@ use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Mink67\OpenidConnect\AccessTokenToUser as BaseConverter;
+use Psr\Log\LoggerInterface;
 
 class AccessTokenToUser {
 
@@ -22,6 +23,10 @@ class AccessTokenToUser {
      * @var BaseConverter
      */
     private $baseConverter;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * 
@@ -30,7 +35,9 @@ class AccessTokenToUser {
         string $jwk_url, 
         HttpClientInterface $httpClient,
         BaseConverter $baseConverter,
+        LoggerInterface $logger
     ) {
+        $this->logger = $logger;
         $this->jwks_url = $jwk_url;
         $this->httpClient = $httpClient;
         $this->baseConverter = $baseConverter;
@@ -51,6 +58,7 @@ class AccessTokenToUser {
         }
         catch (\Throwable $th) {
             //dd($th);
+            $this->logger->error($th->getMessage());
             return null;
         }
 
